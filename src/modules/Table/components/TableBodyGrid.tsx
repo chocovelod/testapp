@@ -1,5 +1,6 @@
 import { Copy, ScanSource, ShareLink } from "@/icons";
-import { CopyButton } from "@/src/components";
+import { CopyButton } from "@/src/components/ui";
+import { Button } from "@/src/components/ui/Button";
 import Image from "next/image";
 import { FC } from "react";
 import styled from "styled-components";
@@ -13,7 +14,7 @@ interface Props {
     fileWeight: string;
     ipAddressV4: string;
     ipAddressV6: string;
-    link: string;
+    linkGrid: string;
     icon: string;
   }[];
 }
@@ -38,7 +39,9 @@ const TableBodyGrid: FC<Props> = ({ content }) => {
                 <div>{tableItem.name}</div>
                 <div>
                   <span>{tableItem.fileName}</span>
-                  <span>{tableItem.fileWeight}</span>
+                  <span className="[ Color_tertiary ]">
+                    {tableItem.fileWeight}
+                  </span>
                 </div>
               </div>
             </div>
@@ -50,20 +53,29 @@ const TableBodyGrid: FC<Props> = ({ content }) => {
               </div>
               <div className="[ TableBodyGrid__indicatorColumn ]">
                 <CopyButton className="[ TableBodyGrid__button ]">
-                  <span>{tableItem.ipAddressV4}</span>
+                  <span className="[ TableBodyGrid__indicator ]">
+                    {tableItem.ipAddressV4}
+                  </span>
                   <Copy />
                 </CopyButton>
                 <CopyButton className="[ TableBodyGrid__button ]">
-                  <span>{tableItem.ipAddressV6}</span>
+                  <span className="[ TableBodyGrid__indicator ]">
+                    {tableItem.ipAddressV6}
+                  </span>
                   <Copy />
                 </CopyButton>
-                <CopyButton className="[ TableBodyGrid__button ]">
+                <button className="[ test ]">
                   <ScanSource />
-                  <span>{tableItem.link}</span>
-                  <ShareLink />
-                </CopyButton>
+                  <span>
+                    {tableItem.linkGrid}
+                    <ShareLink className="test1" />
+                  </span>
+                </button>
               </div>
             </div>
+            <Button className="[ TableBodyGrid__additionalButton ]">
+              Show additional info
+            </Button>
           </li>
         ))}
       </ul>
@@ -72,6 +84,25 @@ const TableBodyGrid: FC<Props> = ({ content }) => {
 };
 
 const StyledTableBodyGrid = styled.div`
+  .test {
+    display: flex;
+    align-items: center;
+    padding: 0;
+
+    svg {
+      flex-shrink: 0;
+    }
+
+    :hover {
+      color: #0080ff;
+      svg:not(:first-child) {
+        path {
+          fill: #0080ff;
+        }
+      }
+    }
+  }
+
   margin-top: 32px;
 
   .TableBodyGrid {
@@ -81,17 +112,37 @@ const StyledTableBodyGrid = styled.div`
   }
 
   .TableBodyGrid__item {
-    display: flex;
+    display: grid;
+    grid-template-columns: 66px 1fr 94px 198px;
+    grid-template-rows: 1fr 30px;
+    grid-gap: 8px;
     background-color: #fff;
     padding: 20px 32px 24px 32px;
-    border: 1px solid #cacfdb;
+    box-shadow: inset 0 0 0 1px #cacfdb;
     border-radius: 4px;
   }
 
   .TableBodyGrid__indicatorLeft {
     display: grid;
-    grid-template-columns: 66px 112px;
-    gap: 16px 8px;
+    grid-template-columns: 66px 1fr;
+
+    p {
+      display: flex;
+      align-items: center;
+    }
+
+    span {
+      max-width: 84px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .TableBodyGrid__indicatorRight {
+    display: grid;
+    grid-template-columns: 94px 1fr;
+    grid-column-start: 3;
 
     p {
       display: flex;
@@ -99,16 +150,11 @@ const StyledTableBodyGrid = styled.div`
     }
   }
 
-  .TableBodyGrid__indicatorRight {
-    display: grid;
-    grid-template-columns: 94px 198px;
-    gap: 16px 8px;
-    margin-left: 32px;
-
-    p {
-      display: flex;
-      align-items: center;
-    }
+  .TableBodyGrid__indicator {
+    max-width: 164px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .TableBodyGrid__indicatorColumn {
@@ -122,10 +168,17 @@ const StyledTableBodyGrid = styled.div`
 
   .TableBodyGrid__riskIndicator {
     display: flex;
+
+    p {
+      margin-left: 4px;
+    }
   }
 
   .TableBodyGrid__button {
+    display: flex;
+    align-items: center;
     span {
+      max-width: 164px;
       padding-right: 8px;
     }
 
@@ -143,6 +196,11 @@ const StyledTableBodyGrid = styled.div`
         fill: #0080ff;
       }
     }
+  }
+
+  .TableBodyGrid__additionalButton {
+    grid-column-start: 4;
+    grid-row-start: 2;
   }
 `;
 

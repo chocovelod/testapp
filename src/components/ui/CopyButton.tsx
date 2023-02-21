@@ -17,8 +17,8 @@ const CopyButton: FC<Props> = ({ className, children }) => {
 const StyledCopyButton = styled.button`
   display: flex;
   align-items: center;
-  width: fit-content;
-  max-width: 198px;
+  max-width: fit-content;
+
   padding: 4px 7px 4px 8px;
   border: 1px solid #cacfdb;
   border-radius: 4px;

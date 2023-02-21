@@ -70,9 +70,15 @@ const Table: FC<Props> = ({ isActiveButton }) => {
 };
 
 const StyledTable = styled.section`
-  .test1 {
-    background-color: transparent;
-    padding: 8px;
+  .Table__menu {
+    position: absolute;
+
+    list-style-type: none;
+    margin: 5px 0;
+    padding: 0;
+
+    border: 1px solid grey;
+    width: 150px;
   }
 
   padding-top: 261px;
