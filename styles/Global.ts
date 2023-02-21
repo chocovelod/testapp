@@ -11,6 +11,10 @@ const Global = createGlobalStyle`
     button,input:hover {
       cursor: pointer;
     }
+    button {
+      border: none;
+      background: transparent;
+    }
     
   }
 

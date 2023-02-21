@@ -50,6 +50,7 @@ const StyledTableItem = styled.ul`
     background-color: #ffffff;
     border: 1px solid #cacfdb;
     border-radius: 4px;
+    transition: 0.1s ease-in;
 
     :hover {
       background-color: #10111d;

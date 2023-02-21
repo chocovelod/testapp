@@ -19,7 +19,8 @@ const TableBodyTable = () => {
   );
 };
 
-const StyledTableBodyTable = styled.table`
+const StyledTableBodyTable = styled.div`
+  width: 100%;
   margin-top: 32px;
 
   .TableBody__head {
