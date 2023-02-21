@@ -1,3 +1,4 @@
+import { Copy, ScanSource, ShareLink } from "@/icons";
 import Image from "next/image";
 import { FC } from "react";
 import styled from "styled-components";
@@ -24,9 +25,16 @@ const TableItems: FC<Props> = ({ content }) => {
           <td data-th="Name">{tableItem.name}</td>
           <td>{tableItem.fileName}</td>
           <td>{tableItem.fileWeight}</td>
-          <td>{tableItem.ipAddressV4}</td>
-          <td>{tableItem.ipAddressV6}</td>
-          <td>{tableItem.link}</td>
+          <td>
+            {tableItem.ipAddressV4} <Copy />
+          </td>
+          <td>
+            {tableItem.ipAddressV6} <Copy />
+          </td>
+          <td>
+            <ScanSource />
+            {tableItem.link} <ShareLink />
+          </td>
         </li>
       ))}
     </StyledTableItem>
@@ -36,6 +44,7 @@ const TableItems: FC<Props> = ({ content }) => {
 const StyledTableItem = styled.ul`
   .TableItem {
     display: flex;
+    align-items: center;
     margin-top: 8px;
     padding: 18px 32px;
     background-color: #ffffff;
