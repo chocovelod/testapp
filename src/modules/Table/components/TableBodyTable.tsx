@@ -7,11 +7,11 @@ const TableBodyTable = () => {
 
   return (
     <StyledTableBodyTable>
-      <tr className="[ TableBody__head ]">
+      <tr className="[ TableBody__head ] [ Color_secondary ]">
         <th>Name</th>
         <th>File name</th>
-        <th>Ith Address v4</th>
-        <th>Ith Address v6</th>
+        <th>IP Address v4</th>
+        <th>IP Address v6</th>
         <th>Scan source</th>
       </tr>
       <TableItems content={tableContent} />
