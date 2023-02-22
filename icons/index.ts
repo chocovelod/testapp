@@ -1,3 +1,4 @@
+export { Close } from "./Close";
 export { Copy } from "./Copy";
 export { DropDownIcon } from "./DropDownIcon";
 export { GridButton } from "./GridButton";

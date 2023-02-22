@@ -22,19 +22,19 @@ const TableItems: FC<Props> = ({ content }) => {
       {content.map((tableItem, index) => (
         <li key={index} className="[ TableItem ]">
           <Image src={tableItem.icon} width={26} height={26} alt="" />
-          <td data-th="Name">{tableItem.name}</td>
-          <td>{tableItem.fileName}</td>
-          <td>{tableItem.fileWeight}</td>
-          <td>
+          <div data-th="Name">{tableItem.name}</div>
+          <div>{tableItem.fileName}</div>
+          <div>{tableItem.fileWeight}</div>
+          <div>
             {tableItem.ipAddressV4} <Copy />
-          </td>
-          <td>
+          </div>
+          <div>
             {tableItem.ipAddressV6} <Copy />
-          </td>
-          <td>
+          </div>
+          <div>
             <ScanSource />
             {tableItem.link} <ShareLink />
-          </td>
+          </div>
         </li>
       ))}
     </StyledTableItem>

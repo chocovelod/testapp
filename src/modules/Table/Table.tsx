@@ -6,17 +6,12 @@ import {
   TableButton,
 } from "@/icons";
 import { SortIcon } from "@/icons/SortIcon";
-import { FC } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import styled from "styled-components";
 import data from "../../data/data.json";
 import { TableBodyGrid, TableBodyTable } from "./components";
 
-interface Props {
-  isActiveButton: string;
-}
-
-const Table: FC<Props> = ({ isActiveButton }) => {
+const Table = ({}) => {
   const tableContent: any = data;
 
   return (
