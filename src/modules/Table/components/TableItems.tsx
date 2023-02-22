@@ -1,6 +1,7 @@
 import { Copy, ScanSource, ShareLink } from "@/icons";
+import { Accordion } from "@/src/components/ui/Accordion";
 import Image from "next/image";
-import { FC } from "react";
+import { FC, SetStateAction, useCallback, useState } from "react";
 import styled from "styled-components";
 
 interface Props {
@@ -13,10 +14,19 @@ interface Props {
     ipAddressV6: string;
     link: string;
     icon: string;
+    additionalInfo: string;
   }[];
 }
 
 const TableItems: FC<Props> = ({ content }) => {
+  const [expanded, setExpanded] = useState();
+
+  const handleChange = useCallback(
+    (panelId: SetStateAction<any>) => (isExpanded: boolean) =>
+      isExpanded ? setExpanded(panelId) : setExpanded(undefined),
+    []
+  );
+
   return (
     <StyledTableItem>
       {content.map((tableItem, index) => (
@@ -35,6 +45,16 @@ const TableItems: FC<Props> = ({ content }) => {
             <ScanSource />
             {tableItem.link} <ShareLink />
           </div>
+          <Accordion
+            key={tableItem.id}
+            expanded={expanded === tableItem.id}
+            onChange={handleChange(tableItem.id)}
+            className="test"
+          >
+            <p className="[ TableItem__additionalItem ]">
+              {tableItem.additionalInfo}
+            </p>
+          </Accordion>
         </li>
       ))}
     </StyledTableItem>
@@ -42,6 +62,11 @@ const TableItems: FC<Props> = ({ content }) => {
 };
 
 const StyledTableItem = styled.ul`
+  .test {
+    width: 100px;
+    border: 1px solid red;
+  }
+
   .TableItem {
     display: flex;
     align-items: center;
@@ -55,6 +80,10 @@ const StyledTableItem = styled.ul`
     :hover {
       background-color: #10111d;
       color: white;
+    }
+
+    .TableItem__additionalItem {
+      word-wrap: break-word;
     }
   }
 `;
