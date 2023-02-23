@@ -1,6 +1,4 @@
-import { Copy, ScanSource, ShareLink } from "@/icons";
 import { Accordion } from "@/src/components/ui/Accordion";
-import Image from "next/image";
 import { FC, SetStateAction, useCallback, useState } from "react";
 import styled from "styled-components";
 
@@ -14,6 +12,7 @@ interface Props {
     ipAddressV6: string;
     link: string;
     icon: string;
+    iconHover: string;
     additionalInfo: string;
   }[];
 }
@@ -31,7 +30,7 @@ const TableItems: FC<Props> = ({ content }) => {
     <StyledTableItem>
       {content.map((tableItem, index) => (
         <li key={index} className="[ TableItem ]">
-          <Image src={tableItem.icon} width={26} height={26} alt="" />
+          {/* <Image src={tableItem.icon} width={26} height={26} alt="" />
           <div data-th="Name">{tableItem.name}</div>
           <div>{tableItem.fileName}</div>
           <div>{tableItem.fileWeight}</div>
@@ -44,16 +43,25 @@ const TableItems: FC<Props> = ({ content }) => {
           <div>
             <ScanSource />
             {tableItem.link} <ShareLink />
-          </div>
+          </div> */}
           <Accordion
+            name={tableItem.name}
+            fileName={tableItem.fileName}
+            ipAddressV4={tableItem.ipAddressV4}
+            ipAddressV6={tableItem.ipAddressV6}
+            fileWeight={tableItem.fileWeight}
+            link={tableItem.link}
+            icon={tableItem.icon}
+            iconHover={tableItem.iconHover}
+            additionalInfo={tableItem.additionalInfo}
             key={tableItem.id}
             expanded={expanded === tableItem.id}
             onChange={handleChange(tableItem.id)}
             className="test"
           >
-            <p className="[ TableItem__additionalItem ]">
+            {/* <p className="[ TableItem__additionalItem ]">
               {tableItem.additionalInfo}
-            </p>
+            </p> */}
           </Accordion>
         </li>
       ))}
@@ -62,26 +70,8 @@ const TableItems: FC<Props> = ({ content }) => {
 };
 
 const StyledTableItem = styled.ul`
-  .test {
-    width: 100px;
-    border: 1px solid red;
-  }
-
   .TableItem {
-    display: flex;
-    align-items: center;
     margin-top: 8px;
-    padding: 18px 32px;
-    background-color: #ffffff;
-    border: 1px solid #cacfdb;
-    border-radius: 4px;
-    transition: 0.1s ease-in;
-
-    :hover {
-      background-color: #10111d;
-      color: white;
-    }
-
     .TableItem__additionalItem {
       word-wrap: break-word;
     }

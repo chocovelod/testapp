@@ -28,7 +28,6 @@ const StyledCopyButton = styled.button`
     display: flex;
     overflow: hidden;
     align-items: center;
-    line-clamp: 1;
   }
 `;
 

@@ -8,6 +8,7 @@ const TableBodyTable = () => {
   return (
     <StyledTableBodyTable>
       <div className="[ TableBody__head ] [ Color_secondary ]">
+        <p></p>
         <p>Name</p>
         <p>File name</p>
         <p>IP Address v4</p>
@@ -24,7 +25,11 @@ const StyledTableBodyTable = styled.div`
   margin-top: 32px;
 
   .TableBody__head {
-    display: flex;
+    display: grid;
+    grid-template-columns: 24px 112px 175px 166px 198px 1fr;
+    column-gap: 42px;
+    align-items: center;
+    padding-left: 32px;
   }
 `;
 

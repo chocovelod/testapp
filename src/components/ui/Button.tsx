@@ -60,7 +60,7 @@ const StyledButton = styled.a`
   border-radius: 4px;
   cursor: pointer;
   border: none;
-  padding: 6px 32px;
+  padding: 6px 8px;
 
   &.Button_primary {
     background: #0080ff;
