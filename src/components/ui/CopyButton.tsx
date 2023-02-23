@@ -9,7 +9,7 @@ interface Props {
 const CopyButton: FC<Props> = ({ className, children }) => {
   return (
     <StyledCopyButton className={className}>
-      <span className="[ CopyButton__content ]">{children}</span>
+      <div className="[ CopyButton__content ]">{children}</div>
     </StyledCopyButton>
   );
 };
@@ -17,10 +17,11 @@ const CopyButton: FC<Props> = ({ className, children }) => {
 const StyledCopyButton = styled.button`
   display: flex;
   align-items: center;
-  max-width: fit-content;
+  max-width: max-content;
+  justify-content: space-between;
 
   padding: 4px 7px 4px 8px;
-  border: 1px solid #cacfdb;
+  box-shadow: inset 0 0 0 1px #cacfdb;
   border-radius: 4px;
   background-color: #ffffff;
 

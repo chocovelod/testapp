@@ -12,6 +12,7 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import styled from "styled-components";
 import data from "../../data/data.json";
 import { DropDownMenu, TableBodyGrid, TableBodyTable } from "./components";
+import { Checkbox } from "./components/Checkbox";
 
 const Table = ({}) => {
   const tableContent: any = data;
@@ -38,10 +39,7 @@ const Table = ({}) => {
           <div className="[ Table__head ]">
             <OrcaLogo />
             <div className="[ Table__headButtons ]">
-              <div>
-                <input type="checkbox" id="additionalItems" />
-                <label htmlFor="additionalItems">Show additional items</label>
-              </div>
+              <Checkbox />
               <button className="[ Table__headDropdownButton ]">
                 <GroupIcon />
                 <p>Group by</p>
@@ -55,7 +53,7 @@ const Table = ({}) => {
                 }}
               >
                 <SortIcon />
-                <p>Sort by</p>{" "}
+                <p>Sort by</p>
                 <DropDownIcon className={cn({ Table__dropDownIcon: isOpen })} />
               </button>
               {isOpen && <DropDownMenu />}
@@ -97,13 +95,14 @@ const StyledTable = styled.section`
   .Table__head {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 16px;
+    padding-bottom: 15px;
     border-bottom: 1px solid #cacfdb;
   }
 
   .Table__headButtons {
     display: flex;
     align-items: center;
+    place-self: flex-end;
   }
 
   .Table__headDropdownButton:not(:first-child) {
@@ -115,7 +114,7 @@ const StyledTable = styled.section`
     align-items: center;
     padding: 6px 8px;
     border-radius: 4px;
-    border: 1px solid #cacfdb;
+    box-shadow: inset 0 0 0 1px #cacfdb;
     background-color: #ffffff;
 
     p {
@@ -123,7 +122,7 @@ const StyledTable = styled.section`
     }
 
     :hover {
-      border: 1px solid #0080ff;
+      box-shadow: inset 0 0 0 1px #0080ff;
       svg {
         path {
           fill: #0080ff;
@@ -155,13 +154,21 @@ const StyledTable = styled.section`
     padding: 5px 8px;
   }
 
+  .Table__unselectedTab:hover {
+    svg {
+      path {
+        fill: #0080ff;
+      }
+    }
+  }
+
   .Table__selectedTab {
     border-radius: 4px;
     background-color: #0080ff;
     padding: 5px 8px;
     svg {
       path {
-        fill: white;
+        fill: white !important;
       }
     }
   }

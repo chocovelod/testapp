@@ -36,7 +36,7 @@ const StyledDropDownMenu = styled.div`
     top: 20px;
     right: 0;
 
-    width: 122px;
+    width: max-content;
     background: #ffffff;
     padding: 8px 16px;
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);

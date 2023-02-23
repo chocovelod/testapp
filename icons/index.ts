@@ -1,3 +1,4 @@
+export { CheckBox } from "./CheckBox";
 export { Close } from "./Close";
 export { Copy } from "./Copy";
 export { Download } from "./Download";

@@ -92,10 +92,12 @@ const Accordion: FC<Props> = ({
             <p className="[ Color_tertiary ]">{fileWeight}</p>
           </div>
           <CopyButton className="[ Accordion__copyButton ]">
-            {ipAddressV4} <Copy />
+            <span>{ipAddressV4}</span>
+            <Copy className="[ Accordion__copyIcon ]" />
           </CopyButton>
           <CopyButton className="[ Accordion__ipV6 ]">
-            {ipAddressV6} <Copy />
+            <span className="[ Accordion__ipV6Content ]">{ipAddressV6}</span>
+            <Copy />
           </CopyButton>
           <div className="[ Accordion__sourceLink ]">
             <ScanSource />
@@ -161,7 +163,7 @@ const StyledAccordion = styled.div<{ contentWrapperHeight: number }>`
   }
 
   .Accordion__copyButton,
-  .Accordion__ipV6:hover {
+  .Accordion__ipV6 {
     :hover {
       svg {
         path {
@@ -201,12 +203,19 @@ const StyledAccordion = styled.div<{ contentWrapperHeight: number }>`
   }
 
   .Accordion__ipV6 {
-    span {
-      max-width: 164px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+    max-width: 198px;
+  }
+
+  .Accordion__ipV6Content {
+    max-width: 164px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .Accordion__copyIcon {
+    margin-left: 8px;
+    flex-shrink: 0;
   }
 
   .Accordion__sourceLink {
