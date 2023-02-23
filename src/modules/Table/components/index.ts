@@ -1,3 +1,4 @@
+export { DropDownMenu } from "./DropDownMenu";
 export { InfoModal } from "./InfoModal";
 export { InfoModalContent } from "./InfoModalContent";
 export { TableBodyGrid } from "./TableBodyGrid";

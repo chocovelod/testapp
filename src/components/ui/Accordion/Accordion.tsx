@@ -1,5 +1,4 @@
 import { Copy, Download, DropDownIcon, ScanSource, ShareLink } from "@/icons";
-import data from "@/src/data/data.json";
 import Image from "next/image";
 import { FC, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
@@ -44,8 +43,6 @@ const Accordion: FC<Props> = ({
   fileWeight,
   iconHover,
 }) => {
-  const tableContent: any = data;
-
   const [contentHeight, setContentHeight] = useState(0);
 
   const [expanded, setExpandedState] = useControlled({
@@ -73,7 +70,7 @@ const Accordion: FC<Props> = ({
 
   return (
     <StyledAccordion contentWrapperHeight={contentHeight} className={className}>
-      <div className="[ Accordion__title ]" onClick={handleToggle}>
+      <div className="[ Accordion ]" onClick={handleToggle}>
         <div className="[ Accordion__headContent ]">
           <Image
             src={icon}
@@ -142,7 +139,7 @@ const StyledAccordion = styled.div<{ contentWrapperHeight: number }>`
 
     :hover {
       background-color: #10111d;
-      color: white;
+      color: #ffffff;
 
       .Accordion__riskIconHover {
         display: flex;
@@ -153,7 +150,12 @@ const StyledAccordion = styled.div<{ contentWrapperHeight: number }>`
       .Accordion__copyButton,
       .Accordion__ipV6 {
         background-color: #10111d;
-        color: white;
+        color: #ffffff;
+      }
+      .Accordion__fileName {
+        p {
+          color: #ffffff;
+        }
       }
     }
   }
@@ -180,7 +182,7 @@ const StyledAccordion = styled.div<{ contentWrapperHeight: number }>`
     }
   }
 
-  .Accordion__title {
+  .Accordion {
     cursor: pointer;
     display: flex;
     justify-content: space-between;

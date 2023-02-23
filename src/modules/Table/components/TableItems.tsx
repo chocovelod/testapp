@@ -30,20 +30,6 @@ const TableItems: FC<Props> = ({ content }) => {
     <StyledTableItem>
       {content.map((tableItem, index) => (
         <li key={index} className="[ TableItem ]">
-          {/* <Image src={tableItem.icon} width={26} height={26} alt="" />
-          <div data-th="Name">{tableItem.name}</div>
-          <div>{tableItem.fileName}</div>
-          <div>{tableItem.fileWeight}</div>
-          <div>
-            {tableItem.ipAddressV4} <Copy />
-          </div>
-          <div>
-            {tableItem.ipAddressV6} <Copy />
-          </div>
-          <div>
-            <ScanSource />
-            {tableItem.link} <ShareLink />
-          </div> */}
           <Accordion
             name={tableItem.name}
             fileName={tableItem.fileName}
@@ -57,11 +43,8 @@ const TableItems: FC<Props> = ({ content }) => {
             key={tableItem.id}
             expanded={expanded === tableItem.id}
             onChange={handleChange(tableItem.id)}
-            className="test"
           >
-            {/* <p className="[ TableItem__additionalItem ]">
-              {tableItem.additionalInfo}
-            </p> */}
+            <></>
           </Accordion>
         </li>
       ))}

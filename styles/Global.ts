@@ -12,6 +12,7 @@ const Global = createGlobalStyle`
       cursor: pointer;
     }
     button {
+      padding: 0;
       border: none;
       background: transparent;
     }
