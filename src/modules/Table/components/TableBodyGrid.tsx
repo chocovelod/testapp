@@ -102,7 +102,7 @@ const StyledTableBodyGrid = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     column-gap: 32px;
-    row-gap: 36px;
+    row-gap: 38px;
     background-color: #fff;
     padding: 20px 32px 24px 32px;
     box-shadow: inset 0 0 0 1px #cacfdb;
@@ -170,6 +170,19 @@ const StyledTableBodyGrid = styled.div`
     div {
       margin-left: 4px;
     }
+    svg {
+      flex-shrink: 0;
+    }
+
+    :hover {
+      cursor: pointer;
+      color: #0080ff;
+      .TableBodyGrid__shareIcon {
+        path {
+          fill: #0080ff;
+        }
+      }
+    }
   }
 
   .TableBodyGrid__shareButtonContent {
@@ -196,7 +209,7 @@ const StyledTableBodyGrid = styled.div`
 
   .TableBodyGrid__riskIndicator {
     display: flex;
-
+    align-items: center;
     p {
       margin-left: 4px;
     }
