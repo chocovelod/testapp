@@ -1,18 +1,25 @@
 import { Modal } from "@/src/components/ui/Modal/Modal";
 import { FC, RefObject } from "react";
-import styled from "styled-components";
-import data from "../../../data/data.json";
 import { InfoModalContent } from "./InfoModalContent";
 
 interface Props {
   isOpen: boolean;
   focusAfterClose?: RefObject<HTMLElement>;
   onClose: () => void;
+
+  name: string;
+  icon: string;
+  additionalInfo: string;
 }
 
-const InfoModal: FC<Props> = ({ isOpen, focusAfterClose, onClose }) => {
-  const content: any = data;
-
+const InfoModal: FC<Props> = ({
+  isOpen,
+  focusAfterClose,
+  onClose,
+  name,
+  icon,
+  additionalInfo,
+}) => {
   return (
     <Modal
       isOpen={isOpen}
@@ -22,18 +29,15 @@ const InfoModal: FC<Props> = ({ isOpen, focusAfterClose, onClose }) => {
       withCloseButton
     >
       <div>
-        <InfoModalContent content={content} />
+        <InfoModalContent
+          onClose={onClose}
+          name={name}
+          icon={icon}
+          additionalInfo={additionalInfo}
+        />
       </div>
     </Modal>
   );
 };
-
-const StyledInfoModal = styled.div`
-  .test {
-    padding: 80px;
-    color: red;
-    background-color: #ffffff;
-  }
-`;
 
 export { InfoModal };

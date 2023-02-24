@@ -6,6 +6,12 @@ const Fonts = createGlobalStyle`
     line-height: 18px;
     font-weight: 400;
   }
+
+  .Font__24_18 {
+    font-size: 24px;
+    line-height: 18px;
+    font-weight: 400;
+  }
 `;
 
 export { Fonts };

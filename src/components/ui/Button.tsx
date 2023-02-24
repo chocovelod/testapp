@@ -78,10 +78,6 @@ const StyledButton = styled.a`
     box-shadow: 0px 0px 0px 2px #e1eefd;
   }
 
-  &.Button_secondary:hover {
-    box-shadow: 0px 0px 0px 2px #e1eefd;
-  }
-
   .Button__label {
     text-align: center;
   }
