@@ -6,6 +6,7 @@ import {
   TableButton,
 } from "@/icons";
 import { SortIcon } from "@/icons/SortIcon";
+import { Button } from "@/src/components/ui/Button";
 import cn from "classnames";
 import { useEffect, useRef, useState } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
@@ -40,22 +41,30 @@ const Table = ({}) => {
             <OrcaLogo />
             <div className="[ Table__headButtons ]">
               <Checkbox />
-              <button className="[ Table__headDropdownButton ]">
-                <GroupIcon />
-                <p>Group by</p>
-                <DropDownIcon />
-              </button>
-              <button
+              <Button
+                secondary
+                className="[ Table__headDropdownButton ]"
+                leftIcon={<GroupIcon />}
+                rightIcon={<DropDownIcon />}
+              >
+                Group by
+              </Button>
+              <Button
+                secondary
+                leftIcon={<SortIcon />}
+                rightIcon={
+                  <DropDownIcon
+                    className={cn({ Table__dropDownIcon: isOpen })}
+                  />
+                }
                 ref={menuRef}
                 className="[ Table__headDropdownButton ]"
                 onClick={() => {
                   setIsOpen(!isOpen);
                 }}
               >
-                <SortIcon />
-                <p>Sort by</p>
-                <DropDownIcon className={cn({ Table__dropDownIcon: isOpen })} />
-              </button>
+                Sort by
+              </Button>
               {isOpen && (
                 <DropDownMenu className="[ Table__dropDownMenu ]">
                   <li>Name</li>
@@ -117,28 +126,6 @@ const StyledTable = styled.section`
     margin-left: 16px;
   }
 
-  .Table__headDropdownButton {
-    display: flex;
-    align-items: center;
-    padding: 6px 8px;
-    border-radius: 4px;
-    box-shadow: inset 0 0 0 1px #cacfdb;
-    background-color: #ffffff;
-
-    p {
-      padding: 0 8px;
-    }
-
-    :hover {
-      box-shadow: inset 0 0 0 1px #0080ff;
-      svg {
-        path {
-          fill: #0080ff;
-        }
-      }
-    }
-  }
-
   .Table__dropDownMenu {
     top: 20px;
     right: 122px;
@@ -146,10 +133,6 @@ const StyledTable = styled.section`
 
   .Table__dropDownIcon {
     transform: rotate(180deg);
-  }
-
-  .Table__headDropdownButton:not(:first-child) {
-    margin-left: 16px;
   }
 
   .Table__headTabsButton {

@@ -153,12 +153,14 @@ const Accordion: FC<Props> = ({
                 onClick={() => {
                   setIsOpen(!isOpen);
                 }}
+                leftIcon={<Download />}
+                rightIcon={
+                  <DropDownIcon
+                    className={cn({ Accordion__dropDownIcon: isOpen })}
+                  />
+                }
               >
-                <Download />
-                <span>Download as</span>
-                <DropDownIcon
-                  className={cn({ Accordion__dropDownIcon: isOpen })}
-                />
+                Download as
               </Button>
               {isOpen && (
                 <DropDownMenu className="[ Accordion__dropDownMenu ]">
@@ -215,17 +217,6 @@ const StyledAccordion = styled.div<{ contentWrapperHeight: number }>`
       .Accordion__fileName {
         p {
           color: #ffffff;
-        }
-      }
-    }
-  }
-
-  .Accordion__copyButton,
-  .Accordion__ipV6 {
-    :hover {
-      svg {
-        path {
-          fill: #0080ff;
         }
       }
     }
@@ -307,20 +298,9 @@ const StyledAccordion = styled.div<{ contentWrapperHeight: number }>`
     display: flex;
     align-items: center;
     margin-left: 16px;
-    span {
-      padding-left: 4px;
-      padding-right: 4px;
-    }
-
-    svg {
-      path {
-        fill: #ffffff;
-      }
-    }
   }
 
   .Accordion__downloadDropdown {
-    /* position: absolute; */
     right: 32px;
   }
 

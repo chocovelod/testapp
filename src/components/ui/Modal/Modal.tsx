@@ -49,8 +49,7 @@ const StyledModal = styled.div`
   .Modal__window {
     max-width: 100%;
     max-height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
+
     border-radius: 4px;
   }
 

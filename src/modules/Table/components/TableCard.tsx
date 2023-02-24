@@ -34,14 +34,14 @@ const TableCard: FC<Props> = ({ content, className }) => {
   return (
     <StyledTableCard className={className}>
       <div className="[ TableBodyGrid__indicatorLeft ]">
-        <p className="[ Color_secondary ]">Risk level:</p>
+        <div className="[ Color_secondary ]">Risk level:</div>
         <div className="[ TableBodyGrid__riskIndicator ]">
           <Image src={content.iconGrid} width={16} height={16} alt="" />
           <p>{content.riskLevel}</p>
         </div>
-        <p className="[ Color_secondary ]">Name:</p>
+        <div className="[ Color_secondary ]">Name:</div>
         <div>{content.name}</div>
-        <p className="[ Color_secondary ]">File name:</p>
+        <div className="[ Color_secondary ]">File name:</div>
         <div className="[ TableBodyGrid__fileNameContainer ]">
           <div className="[ TableBodyGrid__fileName ]">{content.fileName}</div>
           <span className="[ TableBodyGrid__fileWeight ] [ Color_tertiary ]">
@@ -50,28 +50,34 @@ const TableCard: FC<Props> = ({ content, className }) => {
         </div>
       </div>
       <div className="[ TableBodyGrid__indicatorRight ]">
-        <p className="[ Color_secondary ]">IP Address v4:</p>
+        <div className="[ TableBodyGrid__indicatorName ] [ Color_secondary ]">
+          IP Address v4:
+        </div>
         <CopyButton className="[ TableBodyGrid__button ]">
           <span className="[ TableBodyGrid__indicator ]">
             {content.ipAddressV4}
           </span>
           <Copy className="[ TableBodyGrid__copyIcon ]" />
         </CopyButton>
-        <p className="[ Color_secondary ]">IP Address v6:</p>
+        <div className="[ TableBodyGrid__indicatorName ] [ Color_secondary ]">
+          IP Address v6:
+        </div>
         <CopyButton className="[ TableBodyGrid__button ]">
           <span className="[ TableBodyGrid__indicator ]">
             {content.ipAddressV6}
           </span>
           <Copy className="[ TableBodyGrid__copyIcon ]" />
         </CopyButton>
-        <p className="[ Color_secondary ]">Scan source:</p>
-        <div className="[ TableBodyGrid__buttonContainer ]">
+        <div className="[ TableBodyGrid__indicatorName ][ Color_secondary ]">
+          Scan source:
+        </div>
+        <button className="[ TableBodyGrid__buttonContainer ]">
           <ScanSource className="[ TableBodyGrid__sourceIcon ]" />
           <span className="[ TableBodyGrid__shareButtonContent ]">
             {content.linkGrid}
             <ShareLink className="[ TableBodyGrid__shareIcon ]" />
           </span>
-        </div>
+        </button>
       </div>
       <Button
         onClick={handleOpenModal}
@@ -79,7 +85,6 @@ const TableCard: FC<Props> = ({ content, className }) => {
       >
         Show additional info
       </Button>
-
       <InfoModal
         name={content.name}
         icon={content.iconGrid}
@@ -138,11 +143,15 @@ const StyledTableCard = styled.div`
     column-gap: 8px;
     row-gap: 8px;
 
-    p {
+    div {
       display: flex;
-      align-items: center;
       min-width: 94px;
     }
+  }
+
+  .TableBodyGrid__indicatorName {
+    display: flex;
+    place-items: center;
   }
 
   .TableBodyGrid__indicator {
@@ -158,10 +167,9 @@ const StyledTableCard = styled.div`
 
   .TableBodyGrid__buttonContainer {
     display: flex;
-    align-items: center;
-    div {
-      margin-left: 4px;
-    }
+    margin-top: 4px;
+    text-align: start;
+
     svg {
       flex-shrink: 0;
     }
@@ -177,8 +185,12 @@ const StyledTableCard = styled.div`
     }
   }
 
+  .TableBodyGrid__sourceIcon {
+    margin-top: 4px;
+  }
+
   .TableBodyGrid__shareButtonContent {
-    display: flex;
+    display: inline;
     align-items: center;
     margin-left: 4px;
   }
@@ -186,7 +198,6 @@ const StyledTableCard = styled.div`
   .TableBodyGrid__shareIcon {
     align-self: flex-end;
     margin-left: 4px;
-    margin-bottom: 3px;
     flex-shrink: 0;
   }
 

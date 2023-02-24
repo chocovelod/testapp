@@ -25,17 +25,15 @@ const InfoModal: FC<Props> = ({
       isOpen={isOpen}
       focusAfterClose={focusAfterClose}
       onClose={onClose}
-      ariaLabel="Partner info"
+      ariaLabel="Additional info modal"
       withCloseButton
     >
-      <div>
-        <InfoModalContent
-          onClose={onClose}
-          name={name}
-          icon={icon}
-          additionalInfo={additionalInfo}
-        />
-      </div>
+      <InfoModalContent
+        onClose={onClose}
+        name={name}
+        icon={icon}
+        additionalInfo={additionalInfo}
+      />
     </Modal>
   );
 };

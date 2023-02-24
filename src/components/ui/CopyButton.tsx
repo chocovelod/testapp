@@ -26,6 +26,14 @@ const StyledCopyButton = styled.button`
   border-radius: 4px;
   background-color: #ffffff;
 
+  :hover {
+    svg {
+      path {
+        fill: #0080ff;
+      }
+    }
+  }
+
   .CopyButton__content {
     display: flex;
     overflow: hidden;

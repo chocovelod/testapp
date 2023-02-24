@@ -35,7 +35,6 @@ const Button: FC<Props> = ({
       className={cn(`${className} Font_14_18`, {
         Button_primary: !secondary,
         Button_secondary: secondary,
-        Button_withoutLabel: !children,
       })}
       type={type}
     >
@@ -54,7 +53,7 @@ const Button: FC<Props> = ({
   );
 };
 
-const StyledButton = styled.a`
+const StyledButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,16 +65,31 @@ const StyledButton = styled.a`
   &.Button_primary {
     background: #0080ff;
     color: #ffffff;
-  }
 
-  &.Button_secondary {
-    background: transparent;
-    box-shadow: inset 0 0 0 1px #cacfdb;
-    color: #10111d;
+    svg {
+      path {
+        fill: #fff;
+      }
+    }
   }
 
   &.Button_primary:hover {
     box-shadow: 0px 0px 0px 2px #e1eefd;
+  }
+
+  &.Button_secondary {
+    background: #ffffff;
+    box-shadow: inset 0 0 0 1px #cacfdb;
+    color: #10111d;
+  }
+
+  &.Button_secondary:hover {
+    box-shadow: inset 0 0 0 1px #0080ff;
+    svg {
+      path {
+        fill: #0080ff;
+      }
+    }
   }
 
   .Button__label {
@@ -94,11 +108,6 @@ const StyledButton = styled.a`
 
   .Button__leftIconContainer {
     margin-right: 8px;
-  }
-
-  .Button__iconContainer svg {
-    width: 12px;
-    height: 12px;
   }
 
   &.Button_primary {

@@ -59,14 +59,17 @@ const InfoModalContent: FC<Props> = ({
           >
             Download as
           </Button>
+          {isOpen && (
+            <DropDownMenu className="[ Modal__dropDown ]">
+              <li>Document</li>
+              <li>Image</li>
+              <li>PDF</li>
+              <li>HTML</li>
+            </DropDownMenu>
+          )}
           <Button secondary onClick={onClose}>
             Cancel
           </Button>
-          {isOpen && (
-            <DropDownMenu>
-              <li>test</li>
-            </DropDownMenu>
-          )}
         </div>
       </div>
     </StyledInfoModalContent>
@@ -109,6 +112,11 @@ const StyledInfoModalContent = styled.div`
 
   .Modal__dropDownIcon {
     transform: rotate(180deg);
+  }
+
+  .Modal__dropDown {
+    top: 34px;
+    left: -98px;
   }
 `;
 

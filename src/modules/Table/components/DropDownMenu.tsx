@@ -23,7 +23,6 @@ const StyledDropDownMenu = styled.div`
     padding-bottom: 4px;
     width: max-content;
     background: #ffffff;
-    /* padding: 8px 16px; */
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
     border-radius: 2px;
 
@@ -35,10 +34,6 @@ const StyledDropDownMenu = styled.div`
       cursor: pointer;
       background-color: #e1eefd;
       color: #0080ff;
-    }
-
-    li:not(:first-child) {
-      /* margin-top: 8px; */
     }
   }
 `;
