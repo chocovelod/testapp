@@ -1,4 +1,6 @@
 import { Copy, Download, DropDownIcon, ScanSource, ShareLink } from "@/icons";
+import { DropDownMenu } from "@/src/modules/Table/components";
+import cn from "classnames";
 import Image from "next/image";
 import { FC, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
@@ -68,6 +70,22 @@ const Accordion: FC<Props> = ({
     }
   }, [expanded]);
 
+  const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef<any>();
+
+  useEffect(() => {
+    function handleClickOutside(event: any) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    }
+
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [menuRef]);
+
   return (
     <StyledAccordion contentWrapperHeight={contentHeight} className={className}>
       <div className="[ Accordion ]" onClick={handleToggle}>
@@ -91,15 +109,30 @@ const Accordion: FC<Props> = ({
             {fileName}
             <p className="[ Color_tertiary ]">{fileWeight}</p>
           </div>
-          <CopyButton className="[ Accordion__copyButton ]">
+          <CopyButton
+            className="[ Accordion__copyButton ] [ Accordion__preventHover ]"
+            onClick={(e: any) => {
+              return e.stopPropagation();
+            }}
+          >
             <span>{ipAddressV4}</span>
             <Copy className="[ Accordion__copyIcon ]" />
           </CopyButton>
-          <CopyButton className="[ Accordion__ipV6 ]">
+          <CopyButton
+            className="[ Accordion__ipV6 ] [ Accordion__preventHover ]"
+            onClick={(e: any) => {
+              return e.stopPropagation();
+            }}
+          >
             <span className="[ Accordion__ipV6Content ]">{ipAddressV6}</span>
-            <Copy />
+            <Copy className="[ Accordion__copyIcon ]" />
           </CopyButton>
-          <div className="[ Accordion__sourceLink ]">
+          <div
+            className="[ Accordion__sourceLink ] [ Accordion__preventHover ]"
+            onClick={(e: any) => {
+              return e.stopPropagation();
+            }}
+          >
             <ScanSource />
             <p>{link}</p>
             <ShareLink />
@@ -113,13 +146,28 @@ const Accordion: FC<Props> = ({
             <p className="[ Accordion__additionalInfo ] [ Color_primary ]">
               {additionalInfo}
             </p>
-            <div className="[ Accordion__buttonsContainer ]">
+            <div className="[ Accordion__buttonsContainer ]" ref={menuRef}>
               <Button>Download</Button>
-              <Button className="[ Accordion__dropdownButton ]">
+              <Button
+                className="[ Accordion__dropdownButton ]"
+                onClick={() => {
+                  setIsOpen(!isOpen);
+                }}
+              >
                 <Download />
                 <span>Download as</span>
-                <DropDownIcon />
+                <DropDownIcon
+                  className={cn({ Accordion__dropDownIcon: isOpen })}
+                />
               </Button>
+              {isOpen && (
+                <DropDownMenu className="[ Accordion__dropDownMenu ]">
+                  <li>Document</li>
+                  <li>Image</li>
+                  <li>PDF</li>
+                  <li>HTML</li>
+                </DropDownMenu>
+              )}
             </div>
           </div>
         </div>
@@ -129,6 +177,16 @@ const Accordion: FC<Props> = ({
 };
 
 const StyledAccordion = styled.div<{ contentWrapperHeight: number }>`
+  background-color: #ffffff;
+  box-shadow: inset 0 0 0 1px #cacfdb;
+  border-radius: 4px;
+
+  .Accordion {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+  }
+
   .Accordion__headContent {
     display: grid;
     grid-template-columns: 24px 112px 175px 166px 198px 1fr;
@@ -139,7 +197,7 @@ const StyledAccordion = styled.div<{ contentWrapperHeight: number }>`
     border-bottom: 1px solid #cacfdb;
     border-radius: 4px;
 
-    :hover {
+    :hover:not(:has(.Accordion__preventHover:hover)) {
       background-color: #10111d;
       color: #ffffff;
 
@@ -171,23 +229,6 @@ const StyledAccordion = styled.div<{ contentWrapperHeight: number }>`
         }
       }
     }
-  }
-
-  background-color: #ffffff;
-  box-shadow: inset 0 0 0 1px #cacfdb;
-  border-radius: 4px;
-  transition: 0.1s ease-in;
-
-  &:last-of-type {
-    .Accordion__content {
-      border-bottom: unset;
-    }
-  }
-
-  .Accordion {
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
   }
 
   .Accordion__riskIconHover {
@@ -275,6 +316,25 @@ const StyledAccordion = styled.div<{ contentWrapperHeight: number }>`
       path {
         fill: #ffffff;
       }
+    }
+  }
+
+  .Accordion__downloadDropdown {
+    /* position: absolute; */
+    right: 32px;
+  }
+
+  .Accordion__dropDownIcon {
+    transform: rotate(180deg);
+  }
+
+  .Accordion__dropDownMenu {
+    position: relative;
+    top: 34px;
+    right: 138px;
+
+    ul {
+      width: 138px;
     }
   }
 `;

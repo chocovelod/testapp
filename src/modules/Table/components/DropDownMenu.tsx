@@ -1,30 +1,15 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import styled from "styled-components";
 
 export interface Props {
   className?: string;
+  children?: ReactNode;
 }
 
-const DropDownMenu: FC<Props> = ({ className }) => {
+const DropDownMenu: FC<Props> = ({ className, children }) => {
   return (
     <StyledDropDownMenu className={className}>
-      <ul className="[ DropDownMenu ]">
-        <li>
-          <button>Name</button>
-        </li>
-        <li>
-          <button>File name</button>
-        </li>
-        <li>
-          <button>IP Address v4</button>
-        </li>
-        <li>
-          <button>IP Address v6</button>
-        </li>
-        <li>
-          <button>Scan source</button>
-        </li>
-      </ul>
+      <ul className="[ DropDownMenu ] [ Color_primary ]">{children}</ul>
     </StyledDropDownMenu>
   );
 };
@@ -33,21 +18,27 @@ const StyledDropDownMenu = styled.div`
   position: relative;
   .DropDownMenu {
     position: absolute;
-    top: 20px;
-    right: 0;
 
+    padding-top: 4px;
+    padding-bottom: 4px;
     width: max-content;
     background: #ffffff;
-    padding: 8px 16px;
+    /* padding: 8px 16px; */
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
     border-radius: 2px;
 
-    button:hover {
+    li {
+      padding: 4px 16px;
+    }
+
+    li:hover {
+      cursor: pointer;
+      background-color: #e1eefd;
       color: #0080ff;
     }
 
     li:not(:first-child) {
-      margin-top: 8px;
+      /* margin-top: 8px; */
     }
   }
 `;

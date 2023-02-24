@@ -56,7 +56,15 @@ const Table = ({}) => {
                 <p>Sort by</p>
                 <DropDownIcon className={cn({ Table__dropDownIcon: isOpen })} />
               </button>
-              {isOpen && <DropDownMenu />}
+              {isOpen && (
+                <DropDownMenu className="[ Table__dropDownMenu ]">
+                  <li>Name</li>
+                  <li>File name</li>
+                  <li>IP Address v4</li>
+                  <li>IP Address v6</li>
+                  <li>Scan source</li>
+                </DropDownMenu>
+              )}
               <TabList>
                 <button className="[ Table__headTabsButton ]">
                   <Tab
@@ -129,6 +137,11 @@ const StyledTable = styled.section`
         }
       }
     }
+  }
+
+  .Table__dropDownMenu {
+    top: 20px;
+    right: 122px;
   }
 
   .Table__dropDownIcon {

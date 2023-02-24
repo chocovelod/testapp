@@ -13,6 +13,7 @@ interface Props {
   ariaLabel?: string;
   prefetch?: boolean;
   children?: ReactNode;
+  ref?: any;
 }
 
 const Button: FC<Props> = ({

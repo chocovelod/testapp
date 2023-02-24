@@ -4,11 +4,12 @@ import styled from "styled-components";
 interface Props {
   className?: string;
   children: ReactNode;
+  onClick?: any;
 }
 
-const CopyButton: FC<Props> = ({ className, children }) => {
+const CopyButton: FC<Props> = ({ className, children, onClick }) => {
   return (
-    <StyledCopyButton className={className}>
+    <StyledCopyButton className={className} onClick={onClick}>
       <div className="[ CopyButton__content ]">{children}</div>
     </StyledCopyButton>
   );
