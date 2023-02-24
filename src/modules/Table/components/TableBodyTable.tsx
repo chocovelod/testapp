@@ -8,7 +8,7 @@ const TableBodyTable = () => {
   return (
     <StyledTableBodyTable>
       <div className="[ TableBody__head ] [ Color_secondary ]">
-        <p></p>
+        <div />
         <p>Name</p>
         <p>File name</p>
         <p>IP Address v4</p>

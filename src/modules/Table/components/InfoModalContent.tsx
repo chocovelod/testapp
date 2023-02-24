@@ -79,6 +79,7 @@ const InfoModalContent: FC<Props> = ({
 const StyledInfoModalContent = styled.div`
   width: 900px;
   background-color: #ffffff;
+  border-radius: 4px;
 
   .Modal__head {
     display: flex;

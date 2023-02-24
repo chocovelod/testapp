@@ -89,7 +89,11 @@ const Accordion: FC<Props> = ({
   return (
     <StyledAccordion contentWrapperHeight={contentHeight} className={className}>
       <div className="[ Accordion ]" onClick={handleToggle}>
-        <div className="[ Accordion__headContent ]">
+        <div
+          className={cn("[ Accordion__headContent ]", {
+            Accordion__headContent_expanded: expanded,
+          })}
+        >
           <Image
             src={icon}
             width={26}
@@ -189,6 +193,10 @@ const StyledAccordion = styled.div<{ contentWrapperHeight: number }>`
     justify-content: space-between;
   }
 
+  .Accordion__headContent_expanded {
+    border-bottom: 1px solid #cacfdb;
+  }
+
   .Accordion__headContent {
     display: grid;
     grid-template-columns: 24px 112px 175px 166px 198px 1fr;
@@ -196,7 +204,6 @@ const StyledAccordion = styled.div<{ contentWrapperHeight: number }>`
     align-items: center;
     padding: 17px 32px;
     width: 100%;
-    border-bottom: 1px solid #cacfdb;
     border-radius: 4px;
 
     :hover:not(:has(.Accordion__preventHover:hover)) {

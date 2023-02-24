@@ -39,7 +39,7 @@ const Table = ({}) => {
         <Tabs>
           <div className="[ Table__head ]">
             <OrcaLogo />
-            <div className="[ Table__headButtons ]">
+            <div className="[ Table__headButtons ]" ref={menuRef}>
               <Checkbox />
               <Button
                 secondary
@@ -57,7 +57,6 @@ const Table = ({}) => {
                     className={cn({ Table__dropDownIcon: isOpen })}
                   />
                 }
-                ref={menuRef}
                 className="[ Table__headDropdownButton ]"
                 onClick={() => {
                   setIsOpen(!isOpen);
