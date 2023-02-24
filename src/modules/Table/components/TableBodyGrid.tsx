@@ -17,7 +17,7 @@ interface Props {
     ipAddressV4: string;
     ipAddressV6: string;
     linkGrid: string;
-    icon: string;
+    iconGrid: string;
   }[];
 }
 
@@ -34,14 +34,14 @@ const TableBodyGrid: FC<Props> = ({ content }) => {
         {content.map((tableItem, index) => (
           <li key={index} className="[ TableBodyGrid__item ]">
             <div className="[ TableBodyGrid__indicatorLeft ]">
-              <p>Risk level:</p>
+              <p className="[ Color_secondary ]">Risk level:</p>
               <div className="[ TableBodyGrid__riskIndicator ]">
-                <Image src={tableItem.icon} width={16} height={16} alt="" />
+                <Image src={tableItem.iconGrid} width={16} height={16} alt="" />
                 <p>{tableItem.riskLevel}</p>
               </div>
-              <p>Name:</p>
+              <p className="[ Color_secondary ]">Name:</p>
               <div>{tableItem.name}</div>
-              <p>File name:</p>
+              <p className="[ Color_secondary ]">File name:</p>
               <div className="[ TableBodyGrid__fileNameContainer ]">
                 <div className="[ TableBodyGrid__fileName ]">
                   {tableItem.fileName}
@@ -52,30 +52,28 @@ const TableBodyGrid: FC<Props> = ({ content }) => {
               </div>
             </div>
             <div className="[ TableBodyGrid__indicatorRight ]">
-              <p>IP Address v4:</p>
+              <p className="[ Color_secondary ]">IP Address v4:</p>
               <CopyButton className="[ TableBodyGrid__button ]">
                 <span className="[ TableBodyGrid__indicator ]">
                   {tableItem.ipAddressV4}
                 </span>
                 <Copy className="[ TableBodyGrid__copyIcon ]" />
               </CopyButton>
-              <p>IP Address v6:</p>
+              <p className="[ Color_secondary ]">IP Address v6:</p>
               <CopyButton className="[ TableBodyGrid__button ]">
                 <span className="[ TableBodyGrid__indicator ]">
                   {tableItem.ipAddressV6}
                 </span>
                 <Copy className="[ TableBodyGrid__copyIcon ]" />
               </CopyButton>
-              <p>Scan source:</p>
-              <button className="[ test ]">
-                <div className="[ TableBodyGrid__buttonContainer ]">
-                  <ScanSource className="[ TableBodyGrid__sourceIcon ]" />
-                  <span className="[ TableBodyGrid__shareButtonContent ]">
-                    {tableItem.linkGrid}
-                    <ShareLink className="[ TableBodyGrid__shareIcon ]" />
-                  </span>
-                </div>
-              </button>
+              <p className="[ Color_secondary ]">Scan source:</p>
+              <div className="[ TableBodyGrid__buttonContainer ]">
+                <ScanSource className="[ TableBodyGrid__sourceIcon ]" />
+                <span className="[ TableBodyGrid__shareButtonContent ]">
+                  {tableItem.linkGrid}
+                  <ShareLink className="[ TableBodyGrid__shareIcon ]" />
+                </span>
+              </div>
             </div>
             <Button
               onClick={handleOpenModal}
@@ -92,27 +90,6 @@ const TableBodyGrid: FC<Props> = ({ content }) => {
 };
 
 const StyledTableBodyGrid = styled.div`
-  .test {
-    display: flex;
-    align-items: center;
-    padding: 0;
-
-    .TableBodyGrid__sourceIcon {
-      flex-shrink: 0;
-    }
-
-    :hover {
-      color: #0080ff;
-      .TableBodyGrid__shareButtonContent {
-        svg {
-          path {
-            fill: #0080ff;
-          }
-        }
-      }
-    }
-  }
-
   margin-top: 32px;
 
   .TableBodyGrid {
@@ -123,10 +100,9 @@ const StyledTableBodyGrid = styled.div`
 
   .TableBodyGrid__item {
     display: grid;
-    grid-template-columns: 200px 1fr;
-    grid-template-rows: 2;
-    column-gap: 16px;
-    row-gap: 42px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    column-gap: 32px;
+    row-gap: 36px;
     background-color: #fff;
     padding: 20px 32px 24px 32px;
     box-shadow: inset 0 0 0 1px #cacfdb;
@@ -164,7 +140,7 @@ const StyledTableBodyGrid = styled.div`
 
   .TableBodyGrid__indicatorRight {
     display: grid;
-    grid-template-columns: 94px 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: 26px 26px 26px;
     grid-column-start: 3;
     column-gap: 8px;
@@ -173,6 +149,7 @@ const StyledTableBodyGrid = styled.div`
     p {
       display: flex;
       align-items: center;
+      min-width: 94px;
     }
   }
 
@@ -189,12 +166,9 @@ const StyledTableBodyGrid = styled.div`
 
   .TableBodyGrid__buttonContainer {
     display: flex;
+    align-items: center;
     div {
       margin-left: 4px;
-    }
-
-    :first-child {
-      margin-top: 18px;
     }
   }
 
@@ -249,6 +223,9 @@ const StyledTableBodyGrid = styled.div`
   }
 
   .TableBodyGrid__additionalButton {
+    max-width: 198px;
+    width: 100%;
+    place-self: flex-end;
     grid-column-start: 3;
     grid-row-start: 2;
   }

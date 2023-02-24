@@ -43,7 +43,7 @@ const Modal: FC<Props> = ({
 
 const StyledModal = styled.div`
   .Modal__overlay {
-    background: rgba(25, 24, 23, 0.64);
+    background: rgba(16, 17, 29, 0.3);
   }
 
   .Modal__window {
