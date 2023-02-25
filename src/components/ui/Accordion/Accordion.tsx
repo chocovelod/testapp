@@ -193,10 +193,6 @@ const StyledAccordion = styled.div<{ contentWrapperHeight: number }>`
     justify-content: space-between;
   }
 
-  .Accordion__headContent_expanded {
-    border-bottom: 1px solid #cacfdb;
-  }
-
   .Accordion__headContent {
     display: grid;
     grid-template-columns: 24px 112px 175px 166px 198px 1fr;
@@ -227,6 +223,10 @@ const StyledAccordion = styled.div<{ contentWrapperHeight: number }>`
         }
       }
     }
+  }
+
+  .Accordion__headContent_expanded {
+    border-bottom: 1px solid #cacfdb;
   }
 
   .Accordion__riskIconHover {

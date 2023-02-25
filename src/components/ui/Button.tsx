@@ -98,8 +98,6 @@ const StyledButton = styled.button`
 
   .Button__iconContainer {
     display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
   .Button__rightIconContainer {

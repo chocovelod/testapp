@@ -145,6 +145,17 @@ const StyledTable = styled.section`
     background-color: #ffffff;
   }
 
+  .Table__selectedTab {
+    border-radius: 4px;
+    background-color: #0080ff;
+    padding: 5px 8px;
+    svg {
+      path {
+        fill: white !important;
+      }
+    }
+  }
+
   .Table__unselectedTab {
     padding: 5px 8px;
   }
@@ -153,17 +164,6 @@ const StyledTable = styled.section`
     svg {
       path {
         fill: #0080ff;
-      }
-    }
-  }
-
-  .Table__selectedTab {
-    border-radius: 4px;
-    background-color: #0080ff;
-    padding: 5px 8px;
-    svg {
-      path {
-        fill: white !important;
       }
     }
   }
