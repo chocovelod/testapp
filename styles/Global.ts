@@ -2,10 +2,10 @@ import { createGlobalStyle } from "styled-components";
 
 const Global = createGlobalStyle`
   body {
-    font-family: 'Mulish', sans-serif;
-    font-size: 14px;
-    line-height: 18px;
-    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
     color: #10111D;
     -webkit-font-smoothing: antialiased;
     button,input:hover {

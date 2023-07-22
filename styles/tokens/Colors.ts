@@ -2,16 +2,17 @@ import { createGlobalStyle } from "styled-components";
 
 const Colors = createGlobalStyle`
   .Color_primary {
-    color: #10111D;
+    color: #0F172A;
   }
 
   .Color_secondary {
-    color: #70707B;
+    color: #475569;
   }
 
-  .Color_tertiary {
-    color: #CACFDB
+  .Color_error {
+    color: #F87171;
   }
+  
 `;
 
 export { Colors };
